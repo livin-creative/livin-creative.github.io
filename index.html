@@ -901,6 +901,8 @@
         name: 'Prints, Platters, and Pints',
         label: 'Craft market',
         presenter: "Potter's Craft Cider",
+        address: '1350 Arrowhead Valley Rd, Charlottesville VA, 22903',
+        mapquestUrl: 'https://www.mapquest.com/us/virginia/potters-craft-cider-388356404',
         description: 'A day of perusing cool crafts, sipping craft cider, and listening to WTJU DJs hone their craft of musical selection. Vendor Market is from 1-5pm, DJs spin vinyl from 1-6pm.'
       },
       {
@@ -908,6 +910,8 @@
         name: 'Albemarle Farmers & Artisans Market',
         label: 'Farmers market',
         presenter: 'Albemarle Farmers & Artisans Market',
+        address: '340 Towncenter Ln, Charlottesville VA, 22911',
+        mapquestUrl: 'https://www.mapquest.com/us/virginia/charlottesville/22911-5617/340-towncenter-ln-38.12597,-78.44516',
         description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
       },
       {
@@ -915,6 +919,8 @@
         name: 'Albemarle Farmers & Artisans Market',
         label: 'Farmers market',
         presenter: 'Albemarle Farmers & Artisans Market',
+        address: '340 Towncenter Ln, Charlottesville VA, 22911',
+        mapquestUrl: 'https://www.mapquest.com/us/virginia/charlottesville/22911-5617/340-towncenter-ln-38.12597,-78.44516',
         description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
       },
       {
@@ -922,6 +928,8 @@
         name: 'Scrappy Elephant Annual Birthday Celebration',
         label: 'Birthday celebration craft market',
         presenter: 'The Scrappy Elephant',
+        address: '1745 Allied St, Ste C, Charlottesville VA, 22903',
+        mapquestUrl: 'https://www.mapquest.com/us/virginia/the-scrappy-elephant-516542996',
         description: 'The Scrappy Elephant is celebrating its 6th birthday! Join us for a day of fun, food, and crafts. Local vendors will be selling their handmade goods, and there will be activities for all ages. Come celebrate with us!'
       },
       {
@@ -929,6 +937,8 @@
         name: 'Albemarle Farmers & Artisans Market',
         label: 'Farmers market',
         presenter: 'Albemarle Farmers & Artisans Market',
+        address: '340 Towncenter Ln, Charlottesville VA, 22911',
+        mapquestUrl: 'https://www.mapquest.com/us/virginia/charlottesville/22911-5617/340-towncenter-ln-38.12597,-78.44516',
         description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
       },
       {
@@ -936,6 +946,8 @@
         name: 'Albemarle Farmers & Artisans Market',
         label: 'Farmers market',
         presenter: 'Albemarle Farmers & Artisans Market',
+        address: '340 Towncenter Ln, Charlottesville VA, 22911',
+        mapquestUrl: 'https://www.mapquest.com/us/virginia/charlottesville/22911-5617/340-towncenter-ln-38.12597,-78.44516',
         description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
       },
       {
@@ -943,6 +955,8 @@
         name: 'Prints, Platters, and Pints',
         label: 'Craft market',
         presenter: "Potter's Craft Cider",
+        address: '1350 Arrowhead Valley Rd, Charlottesville VA, 22903',
+        mapquestUrl: 'https://www.mapquest.com/us/virginia/potters-craft-cider-388356404',
         description: 'A day of perusing cool crafts, sipping craft cider, and listening to WTJU DJs hone their craft of musical selection. Vendor Market is from 1-5pm, DJs spin vinyl from 1-6pm.'
       },
       {
@@ -950,6 +964,8 @@
         name: 'Albemarle Farmers & Artisans Market',
         label: 'Farmers market',
         presenter: 'Albemarle Farmers & Artisans Market',
+        address: '340 Towncenter Ln, Charlottesville VA, 22911',
+        mapquestUrl: 'https://www.mapquest.com/us/virginia/charlottesville/22911-5617/340-towncenter-ln-38.12597,-78.44516',
         description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
       }
     ];
@@ -988,6 +1004,7 @@
             <div class="event-pill"><span>Event</span><strong>${ev.name}</strong></div>
             <div class="event-pill"><span>Date</span><strong>${dateStr}</strong></div>
             <div class="event-pill"><span>Presenter</span><strong>${ev.presenter}</strong></div>
+            <div class="event-pill" style="grid-column:1/-1"><span>Address</span><strong><a href="${ev.mapquestUrl}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">${ev.address}</a></strong></div>
           </div>
           <p style="margin-top:12px;font-size:var(--text-sm);color:${i === 0 ? 'rgba(255,255,255,0.85)' : 'var(--text-muted)'}">${ev.description}</p>`;
         container.appendChild(el);
