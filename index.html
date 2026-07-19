@@ -23,18 +23,18 @@
       --brand: #bb44dd;
       --brand-deep: #8a22ae;
 
-      /* Analogous — blue-violet → pink */
+      /* Analogous - blue-violet → pink */
       --analog-a: #7a44ee;
       --analog-b: #aa44ff;
       --analog-c: #dd44bb;
       --analog-d: #ff5aaa;
 
       /* Complementary yellows */
-      --yellow-solo: #ffc880;      /* pale yellow-orange — Solo/group kit */
+      --yellow-solo: #ffc880;      /* pale yellow-orange - Solo/group kit */
       --yellow-solo-deep: #e09040;
-      --yellow-date: #ffd84d;      /* core yellow — Date-night kit */
+      --yellow-date: #ffd84d;      /* core yellow - Date-night kit */
       --yellow-date-deep: #f2b705;
-      --yellow-workshop: #c8e855;  /* pale yellow-green — Workshop */
+      --yellow-workshop: #c8e855;  /* pale yellow-green - Workshop */
       --yellow-workshop-deep: #8aaa10;
 
       /* Legacy aliases kept for existing usage */
@@ -279,7 +279,7 @@
       isolation: isolate;
     }
 
-    /* brand-svg is in-flow so its aspect-ratio drives the container height —
+    /* brand-svg is in-flow so its aspect-ratio drives the container height -
        avoids iOS WebKit bug where overflow:hidden + absolute SVG + clip-path = invisible */
     .logo-stage .brand-svg {
       display: block;
@@ -413,7 +413,7 @@
       box-shadow: 0 18px 40px rgba(111, 52, 163, 0.24);
     }
 
-    /* Second event — muted, surface-toned */
+    /* Second event - muted, surface-toned */
     .event-highlight.event-secondary {
       background: linear-gradient(135deg, rgba(187,68,221,0.38), rgba(122,109,255,0.32));
       color: var(--text-dark);
@@ -431,7 +431,7 @@
       border-color: rgba(187,68,221,0.15);
     }
 
-    /* Third event — same as second, equally de-emphasised */
+    /* Third event - same as second, equally de-emphasised */
     .event-highlight.event-tertiary {
       background: linear-gradient(135deg, rgba(187,68,221,0.38), rgba(122,109,255,0.32));
       color: var(--text-dark);
@@ -851,7 +851,7 @@
         const nextSrc = imageUrls[nextIdx];
 
         // Kick off loading the next image AND the display interval simultaneously.
-        // We wait for BOTH — so the fade only fires when the image is ready AND
+        // We wait for BOTH - so the fade only fires when the image is ready AND
         // at least INTERVAL ms have passed. No pop, no race.
         const INTERVAL = 1800;
         await Promise.all([
@@ -864,7 +864,7 @@
           load(imageUrls[(nextIdx + i - 1) % imageUrls.length]);
         }
 
-        // Image is decoded and interval has elapsed — safe to crossfade
+        // Image is decoded and interval has elapsed - safe to crossfade
         const incoming = onLayerA ? imgB : imgA;
         const outgoing  = onLayerA ? imgA : imgB;
 
@@ -911,25 +911,46 @@
         description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
       },
       {
-        date: new Date('2026-06-21T09:00:00-04:00'),
-        name: 'Summer Solstice Fair',
-        label: 'Outdoor festival',
-        presenter: 'Downtown Arts District',
-        description: 'Celebrate the longest day of the year with us at the annual Summer Solstice Fair. Come make something and take it home.'
+        date: new Date('2026-07-25T09:00:00-04:00'),
+        name: 'Albemarle Farmers & Artisans Market',
+        label: 'Farmers market',
+        presenter: 'Albemarle Farmers & Artisans Market',
+        description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
       },
       {
-        date: new Date('2026-06-28T09:00:00-04:00'),
-        name: 'Handmade Holiday Pop-Up',
-        label: 'Pop-up shop',
-        presenter: 'Livin Creative',
-        description: 'A curated pop-up featuring our full kit lineup plus exclusive workshop spots. First come, first served.'
+        date: new Date('2026-08-15T09:00:00-04:00'),
+        name: 'Scrappy Elephant Annual Birthday Celebration',
+        label: 'Birthday celebration craft market',
+        presenter: 'The Scrappy Elephant',
+        description: 'The Scrappy Elephant is celebrating its 6th birthday! Join us for a day of fun, food, and crafts. Local vendors will be selling their handmade goods, and there will be activities for all ages. Come celebrate with us!'
       },
       {
-        date: new Date('2026-07-12T09:00:00-04:00'),
-        name: 'Color Splash Market',
-        label: 'Upcoming appearance',
-        presenter: 'Livin Creative',
-        description: 'Our flagship summer market appearance — kits, demos, and all the color you can handle.'
+        date: new Date('2026-08-29T09:00:00-04:00'),
+        name: 'Albemarle Farmers & Artisans Market',
+        label: 'Farmers market',
+        presenter: 'Albemarle Farmers & Artisans Market',
+        description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
+      },
+      {
+        date: new Date('2026-09-05T09:00:00-04:00'),
+        name: 'Albemarle Farmers & Artisans Market',
+        label: 'Farmers market',
+        presenter: 'Albemarle Farmers & Artisans Market',
+        description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
+      },
+      {
+        date: new Date('2026-09-06T09:00:00-04:00'),
+        name: 'Prints, Platters, and Pints',
+        label: 'Craft market',
+        presenter: "Potter's Craft Cider",
+        description: 'A day of perusing cool crafts, sipping craft cider, and listening to WTJU DJs hone their craft of musical selection. Vendor Market is from 1-5pm, DJs spin vinyl from 1-6pm.'
+      },
+      {
+        date: new Date('2026-09-12T09:00:00-04:00'),
+        name: 'Albemarle Farmers & Artisans Market',
+        label: 'Farmers market',
+        presenter: 'Albemarle Farmers & Artisans Market',
+        description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
       }
     ];
 
