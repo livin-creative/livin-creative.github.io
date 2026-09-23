@@ -1,0 +1,12 @@
+{
+  "type": "solo-group",
+  "typeLabel": "Solo/group kit",
+  "name": "Forever Blooming Bouquets",
+  "description": "Craft your own 5-stem bouquet of flowers that never fade. Bring a miniature colorful, playful element to your space. These charming bouquets make a wonderful gift for yourself and loved one.",
+  "image": "./_images/forever_blooming_bouquet_final.png",
+  "imageAlt": "Forever Blooming Bouquets",
+  "seasonalAvailability": null,
+  "featured": false,
+  "active": true,
+  "sortOrder": 10
+}

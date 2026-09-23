@@ -1,0 +1,12 @@
+{
+  "type": "date-night",
+  "typeLabel": "Date-night kit",
+  "name": "Splatter Art",
+  "description": "A collaborative date-night art experience for two, designed to connect creativity and chaos! Using canvas, paint, and a set of shared tools, you’ll co-create an expressive one-of-a-kind artwork.",
+  "image": "./_images/splatter_art_final.png",
+  "imageAlt": "Splatter Art",
+  "seasonalAvailability": null,
+  "featured": false,
+  "active": true,
+  "sortOrder": 60
+}

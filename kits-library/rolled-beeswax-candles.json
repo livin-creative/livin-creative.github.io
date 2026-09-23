@@ -1,0 +1,12 @@
+{
+  "type": "solo-group",
+  "typeLabel": "Solo/group kit",
+  "name": "Rolled Beeswax Candles",
+  "description": "Create two taper candles with our hands-on candle-making kit.  Each kit features natural beeswax sheets for you to shape, layer, and roll a beautiful candle.",
+  "image": "./_images/rolled_beeswax_candle_final.png",
+  "imageAlt": "Rolled Beeswax Candles",
+  "seasonalAvailability": null,
+  "featured": false,
+  "active": true,
+  "sortOrder": 30
+}

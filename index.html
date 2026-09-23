@@ -724,64 +724,9 @@
       <section class="panel products" aria-label="Current kits">
         <p class="section-intent">Current Products</p>
         <h2>Get kitted out!</h2>
-        <div class="products-grid">
-          <article class="product-card">
-            <div class="product-card-content">
-              <div class="product-index">Solo/group kit</div>
-              <h3>Forever Blooming Bouquets</h3>
-              <p>Craft your own 5-stem bouquet of flowers that never fade. Bring a miniature colorful, playful element to your space. These charming bouquets make a wonderful gift for yourself and loved one.</p>
-            </div>
-            <img class="product-card-image" src="./_images/forever_blooming_bouquet_final.png" alt="Forever Blooming Bouquets" aria-hidden="true" loading="lazy" decoding="async" width="400" height="400">
-          </article>
-          <article class="product-card">
-            <div class="product-card-content">
-              <div class="product-index">Solo/group kit</div>
-              <h3>Felt Geodes</h3>
-              <p>Transform soft wool into a vibrant geode form! Using wet felting techniques, craft your own unique geological marvel. This fun, beginner-friendly kit contains the tools needed to create one large geode or two smaller ones.</p>
-            </div>
-            <img class="product-card-image" src="./_images/felt_geode_final.png" alt="Felt Geodes" aria-hidden="true" loading="lazy" decoding="async" width="400" height="400">
-          </article>
-          <article class="product-card">
-            <div class="product-card-content">
-              <div class="product-index">Solo/group kit</div>
-              <h3>Rolled Beeswax Candles</h3>
-              <p>Create two taper candles with our hands-on candle-making kit.  Each kit features natural beeswax sheets for you to shape, layer, and roll a beautiful candle.</p>
-            </div>
-            <img class="product-card-image" src="./_images/rolled_beeswax_candle_final.png" alt="Rolled Beeswax Candles" aria-hidden="true" loading="lazy" decoding="async" width="400" height="400">
-          </article>
-          <article class="product-card">
-            <div class="product-card-content">
-              <div class="product-index">Solo/group kit</div>
-              <h3>Suncatcher</h3>
-              <p>Build your own radiant sun catcher that transforms sunlight into shifting color and sparkle. A light-catching strand of prismatic beads to hang in a window and watch shine.</p>
-            </div>
-            <img class="product-card-image" src="./_images/suncatcher_final.png" alt="Suncatcher" aria-hidden="true" loading="lazy" decoding="async" width="400" height="400">
-          </article>
-          <article class="product-card">
-            <div class="product-card-content">
-              <div class="product-index">Solo/group kit</div>
-              <h3>"Second Life" Hanging Flowers</h3>
-              <p>With color and detail, create fun hanging flowers in our first “Second Life” art kit. A warm-weather creative experience that celebrates transformation. Available March through June.</p>
-            </div>
-            <img class="product-card-image" src="./_images/hanging_flower_final.png" alt="Hanging Flowers" aria-hidden="true" loading="lazy" decoding="async" width="400" height="400">
-          </article>
-          <article class="product-card">
-            <div class="product-card-content">
-              <div class="product-index date-night">Date-night kit</div>
-              <h3>Splatter Art</h3>
-              <p>A collaborative date-night art experience for two, designed to connect creativity and chaos! Using canvas, paint, and a set of shared tools, you’ll co-create an expressive one-of-a-kind artwork.</p>
-            </div>
-            <img class="product-card-image" src="./_images/splatter_art_final.png" alt="Splatter Art" aria-hidden="true" loading="lazy" decoding="async" width="400" height="400">
-          </article>
-          <article class="product-card">
-            <div class="product-card-content">
-              <div class="product-index date-night">Date-night kit</div>
-              <h3>Torn Paper Collage</h3>
-              <p>A side-by-side date-night art experience. Each person tears their way through solid colored paper, layering, laughing, and laying the scraps out until the final product reveals itself! Includes two matte boards and a curated paper selection for everyone to choose from for making an intuitive, unique composition.</p>
-            </div>
-            <img class="product-card-image" src="./_images/torn_paper_collage_final.png" alt="Torn Paper Collage" aria-hidden="true" loading="lazy" decoding="async" width="400" height="400">
-          </article>
-        </div>
+
+        <div class="products-grid" id="kits-container"></div>
+        <p id="kits-empty" hidden>No kits are available right now.</p>
       </section>
     </main>
   </div>
@@ -901,117 +846,11 @@
     }, { passive: true });
 
     updateHeaderBg();
+</script>
+<script src="./scripts/events.js"></script>
+<script src="./scripts/kits.js"></script>
 
-    const eventFiles = [
-      '/events-library/2026-06-07-prints-platters-and-pints.json',
-      '/events-library/2026-06-20-albemarle-farmers-and-artisans-market.json',
-      '/events-library/2026-07-25-albemarle-farmers-and-artisans-market.json',
-      '/events-library/2026-08-15-scrappy-elephant-annual-birthday-celebration.json',
-      '/events-library/2026-08-29-albemarle-farmers-and-artisans-market.json',
-      '/events-library/2026-09-05-albemarle-farmers-and-artisans-market.json',
-      '/events-library/2026-09-06-prints-platters-and-pints.json',
-      '/events-library/2026-09-12-albemarle-farmers-and-artisans-market.json',
-      '/events-library/2026-09-26-local-comic-shop-day.json',
-      '/events-library/2026-09-29-lets-felt-slugs-and-snails.json',
-      '/events-library/2026-10-13-lets-felt-pumpkins.json',
-      '/events-library/2026-10-15-make-your-own-magic-hats-and-brooms.json',
-      '/events-library/2026-10-20-make-your-own-magic-hats-and-brooms.json',
-      '/events-library/2026-10-22-gothic-royalty-and-spooky-crowns.json',
-      '/events-library/2026-10-25-lets-felt-jack-o-lanterns.json',
-      '/events-library/2026-10-27-make-your-own-magic-oracle-deck.json',
-      '/events-library/2026-11-10-paint-your-own-vinyl.json',
-      '/events-library/2026-11-17-book-jacket-bookmarks.json',
-      '/events-library/2026-11-19-paint-your-own-vinyl.json',
-      '/events-library/2026-11-21-forest-lakes-holiday-market.json',
-      '/events-library/2026-12-03-lets-felt-ornaments.json',
-      '/events-library/2026-12-11-grab-a-kit-and-create-date-night.json',
-      '/events-library/2026-12-19-forest-lakes-winter-holiday-market.json'
-    ];
-
-    async function loadEvents() {
-      const results = await Promise.all(
-        eventFiles.map(async (path) => {
-          try {
-            const response = await fetch(path);
-            if (!response.ok) throw new Error(`Failed to load ${path}`);
-            return await response.json();
-          } catch (error) {
-            console.warn('Skipping event file:', path, error);
-            return [];
-          }
-        })
-      );
-
-      return results.flat().map(event => ({
-        ...event,
-        date: new Date(event.date)
-      }));
-    }
-
-    async function initEvents() {
-      const events = await loadEvents();
-      console.log('events loaded:', events);
-
-      const MAX_EVENTS = 2;
-      const now = new Date();
-
-      const upcomingEvents = events
-        .filter(e => e.date >= now)
-        .sort((a, b) => a.date - b.date)
-        .slice(0, MAX_EVENTS);
-
-      const container = document.getElementById('events-container');
-      const noEvents = document.getElementById('no-events');
-
-      if (upcomingEvents.length === 0) {
-        noEvents.style.display = '';
-        return;
-      }
-
-      const etFormatter = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'America/New_York',
-        weekday: 'long',
-        month: 'long',
-        day: 'numeric'
-      });
-
-      upcomingEvents.forEach((ev, i) => {
-        const dateStr = etFormatter.format(ev.date);
-        const el = document.createElement('div');
-        const modifiers = ['', 'event-secondary', 'event-tertiary'];
-
-        el.className = ('event-highlight ' + (modifiers[i] ?? 'event-tertiary')).trim();
-        if (i > 0) el.style.marginTop = 'var(--space-4)';
-        el.setAttribute('aria-label', ev.name);
-
-        el.innerHTML = `
-          <p class="event-label">${ev.label}</p>
-          <div class="event-grid">
-            <div class="event-pill"><span>Event</span><strong>${ev.name}</strong></div>
-            <div class="event-pill"><span>Date</span><strong>${dateStr}</strong></div>
-            <div class="event-pill"><span>Presenter</span><strong>${ev.presenter}</strong></div>
-            <div class="event-pill" style="grid-column:1/-1">
-              <span>Address</span>
-              <strong>
-                <a href="${ev.mapquestUrl}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">
-                  ${ev.address}
-                </a>
-              </strong>
-            </div>
-          </div>
-          <p style="margin-top:12px;font-size:var(--text-sm);color:${i === 0 ? 'rgba(255,255,255,0.85)' : 'var(--text-muted)'}">${ev.description}</p>
-        `;
-
-        container.appendChild(el);
-      });
-    }
-
-    initEvents().catch(error => {
-      console.error('Event loading failed:', error);
-      document.getElementById('no-events').style.display = '';
-    });
-
-
+<script>
     // ── Clip-path jiggle via SMIL (runs once; zero JS per frame after setup) ──
     (function () {
       // Skip on iOS (WebKit on iPhone has inconsistent SMIL+clipPath support),

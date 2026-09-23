@@ -1,0 +1,12 @@
+{
+  "type": "solo-group",
+  "typeLabel": "Solo/group kit",
+  "name": "Felt Geodes",
+  "description": "Transform soft wool into a vibrant geode form! Using wet felting techniques, craft your own unique geological marvel. This fun, beginner-friendly kit contains the tools needed to create one large geode or two smaller ones.",
+  "image": "./_images/felt_geode_final.png",
+  "imageAlt": "Felt Geodes",
+  "seasonalAvailability": null,
+  "featured": false,
+  "active": true,
+  "sortOrder": 20
+}

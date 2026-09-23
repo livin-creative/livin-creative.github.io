@@ -1,0 +1,12 @@
+{
+  "type": "solo-group",
+  "typeLabel": "Solo/group kit",
+  "name": "Suncatcher",
+  "description": "Build your own radiant sun catcher that transforms sunlight into shifting color and sparkle. A light-catching strand of prismatic beads to hang in a window and watch shine.",
+  "image": "./_images/suncatcher_final.png",
+  "imageAlt": "Suncatcher",
+  "seasonalAvailability": null,
+  "featured": false,
+  "active": true,
+  "sortOrder": 40
+}

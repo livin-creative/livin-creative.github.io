@@ -1,0 +1,12 @@
+{
+  "type": "date-night",
+  "typeLabel": "Date-night kit",
+  "name": "Torn Paper Collage",
+  "description": "A side-by-side date-night art experience...",
+  "image": "./_images/torn_paper_collage_final.png",
+  "imageAlt": "Torn Paper Collage",
+  "seasonalAvailability": null,
+  "featured": false,
+  "active": true,
+  "sortOrder": 70
+}
