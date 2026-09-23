@@ -485,7 +485,7 @@ h2 {
   border-radius: 22px;
   background: var(--surface-strong);
   border: 1px solid rgba(187,68,221,0.12);
-  min-height: 112px;
+  min-height: 12em;
   overflow: hidden;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
