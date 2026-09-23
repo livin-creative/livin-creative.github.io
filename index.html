@@ -886,104 +886,88 @@
     let rafPending = false;
     function updateHeaderBg() {
       const stageBounds = logoStage.getBoundingClientRect();
-      header.classList.toggle('scrolled-past', stageBounds.bottom <= header.getBoundingClientRect().bottom);
+      header.classList.toggle(
+        'scrolled-past',
+        stageBounds.bottom <= header.getBoundingClientRect().bottom
+      );
       rafPending = false;
     }
 
     window.addEventListener('scroll', () => {
-      if (!rafPending) { rafPending = true; requestAnimationFrame(updateHeaderBg); }
-    }, { passive: true });
-    updateHeaderBg();
-    // ── Upcoming events ──────────────────────────────────────────────
-    const events = [
-      {
-        date: new Date('2026-06-07T09:00:00-04:00'),
-        name: 'Prints, Platters, and Pints',
-        label: 'Craft market',
-        presenter: "Potter's Craft Cider",
-        address: '1350 Arrowhead Valley Rd, Charlottesville VA, 22903',
-        mapquestUrl: 'https://www.mapquest.com/us/virginia/potters-craft-cider-388356404',
-        description: 'A day of perusing cool crafts, sipping craft cider, and listening to WTJU DJs hone their craft of musical selection. Vendor Market is from 1-5pm, DJs spin vinyl from 1-6pm.'
-      },
-      {
-        date: new Date('2026-06-20T09:00:00-04:00'),
-        name: 'Albemarle Farmers & Artisans Market',
-        label: 'Farmers market',
-        presenter: 'Albemarle Farmers & Artisans Market',
-        address: '340 Towncenter Ln, Charlottesville VA, 22911',
-        mapquestUrl: 'https://www.mapquest.com/us/virginia/charlottesville/22911-5617/340-towncenter-ln-38.12597,-78.44516',
-        description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
-      },
-      {
-        date: new Date('2026-07-25T09:00:00-04:00'),
-        name: 'Albemarle Farmers & Artisans Market',
-        label: 'Farmers market',
-        presenter: 'Albemarle Farmers & Artisans Market',
-        address: '340 Towncenter Ln, Charlottesville VA, 22911',
-        mapquestUrl: 'https://www.mapquest.com/us/virginia/charlottesville/22911-5617/340-towncenter-ln-38.12597,-78.44516',
-        description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
-      },
-      {
-        date: new Date('2026-08-15T09:00:00-04:00'),
-        name: 'Scrappy Elephant Annual Birthday Celebration',
-        label: 'Birthday celebration craft market',
-        presenter: 'The Scrappy Elephant',
-        address: '1745 Allied St, Ste C, Charlottesville VA, 22903',
-        mapquestUrl: 'https://www.mapquest.com/us/virginia/the-scrappy-elephant-516542996',
-        description: 'The Scrappy Elephant is celebrating its 6th birthday! Join us for a day of fun, food, and crafts. Local vendors will be selling their handmade goods, and there will be activities for all ages. Come celebrate with us!'
-      },
-      {
-        date: new Date('2026-08-29T09:00:00-04:00'),
-        name: 'Albemarle Farmers & Artisans Market',
-        label: 'Farmers market',
-        presenter: 'Albemarle Farmers & Artisans Market',
-        address: '340 Towncenter Ln, Charlottesville VA, 22911',
-        mapquestUrl: 'https://www.mapquest.com/us/virginia/charlottesville/22911-5617/340-towncenter-ln-38.12597,-78.44516',
-        description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
-      },
-      {
-        date: new Date('2026-09-05T09:00:00-04:00'),
-        name: 'Albemarle Farmers & Artisans Market',
-        label: 'Farmers market',
-        presenter: 'Albemarle Farmers & Artisans Market',
-        address: '340 Towncenter Ln, Charlottesville VA, 22911',
-        mapquestUrl: 'https://www.mapquest.com/us/virginia/charlottesville/22911-5617/340-towncenter-ln-38.12597,-78.44516',
-        description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
-      },
-      {
-        date: new Date('2026-09-06T09:00:00-04:00'),
-        name: 'Prints, Platters, and Pints',
-        label: 'Craft market',
-        presenter: "Potter's Craft Cider",
-        address: '1350 Arrowhead Valley Rd, Charlottesville VA, 22903',
-        mapquestUrl: 'https://www.mapquest.com/us/virginia/potters-craft-cider-388356404',
-        description: 'A day of perusing cool crafts, sipping craft cider, and listening to WTJU DJs hone their craft of musical selection. Vendor Market is from 1-5pm, DJs spin vinyl from 1-6pm.'
-      },
-      {
-        date: new Date('2026-09-12T09:00:00-04:00'),
-        name: 'Albemarle Farmers & Artisans Market',
-        label: 'Farmers market',
-        presenter: 'Albemarle Farmers & Artisans Market',
-        address: '340 Towncenter Ln, Charlottesville VA, 22911',
-        mapquestUrl: 'https://www.mapquest.com/us/virginia/charlottesville/22911-5617/340-towncenter-ln-38.12597,-78.44516',
-        description: 'A farmers and artisans market in Northern Albemarle County. Fresh local produce, meats, eggs, baked goods, a nice variety of crafts and more. Twisted Provisions Food truck for breakfast/lunch prepared foods'
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(updateHeaderBg);
       }
+    }, { passive: true });
+
+    updateHeaderBg();
+
+    const eventFiles = [
+      '/events-library/2026-06-07-prints-platters-and-pints.json',
+      '/events-library/2026-06-20-albemarle-farmers-and-artisans-market.json',
+      '/events-library/2026-07-25-albemarle-farmers-and-artisans-market.json',
+      '/events-library/2026-08-15-scrappy-elephant-annual-birthday-celebration.json',
+      '/events-library/2026-08-29-albemarle-farmers-and-artisans-market.json',
+      '/events-library/2026-09-05-albemarle-farmers-and-artisans-market.json',
+      '/events-library/2026-09-06-prints-platters-and-pints.json',
+      '/events-library/2026-09-12-albemarle-farmers-and-artisans-market.json',
+      '/events-library/2026-09-26-local-comic-shop-day.json',
+      '/events-library/2026-09-29-lets-felt-slugs-and-snails.json',
+      '/events-library/2026-10-13-lets-felt-pumpkins.json',
+      '/events-library/2026-10-15-make-your-own-magic-hats-and-brooms.json',
+      '/events-library/2026-10-20-make-your-own-magic-hats-and-brooms.json',
+      '/events-library/2026-10-22-gothic-royalty-and-spooky-crowns.json',
+      '/events-library/2026-10-25-lets-felt-jack-o-lanterns.json',
+      '/events-library/2026-10-27-make-your-own-magic-oracle-deck.json',
+      '/events-library/2026-11-10-paint-your-own-vinyl.json',
+      '/events-library/2026-11-17-book-jacket-bookmarks.json',
+      '/events-library/2026-11-19-paint-your-own-vinyl.json',
+      '/events-library/2026-11-21-forest-lakes-holiday-market.json',
+      '/events-library/2026-12-03-lets-felt-ornaments.json',
+      '/events-library/2026-12-11-grab-a-kit-and-create-date-night.json',
+      '/events-library/2026-12-19-forest-lakes-winter-holiday-market.json'
     ];
 
-    const MAX_EVENTS = 2;
-    // Compare against today in America/New_York
-    const todayET = new Date(new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }));
+    async function loadEvents() {
+      const results = await Promise.all(
+        eventFiles.map(async (path) => {
+          try {
+            const response = await fetch(path);
+            if (!response.ok) throw new Error(`Failed to load ${path}`);
+            return await response.json();
+          } catch (error) {
+            console.warn('Skipping event file:', path, error);
+            return [];
+          }
+        })
+      );
 
-    const upcomingEvents = events
-      .filter(e => e.date >= todayET)
-      .slice(0, MAX_EVENTS);
+      return results.flat().map(event => ({
+        ...event,
+        date: new Date(event.date)
+      }));
+    }
 
-    const container = document.getElementById('events-container');
-    const noEvents = document.getElementById('no-events');
+    async function initEvents() {
+      const events = await loadEvents();
+      console.log('events loaded:', events);
 
-    if (upcomingEvents.length === 0) {
-      noEvents.style.display = '';
-    } else {
+      const MAX_EVENTS = 2;
+      const now = new Date();
+
+      const upcomingEvents = events
+        .filter(e => e.date >= now)
+        .sort((a, b) => a.date - b.date)
+        .slice(0, MAX_EVENTS);
+
+      const container = document.getElementById('events-container');
+      const noEvents = document.getElementById('no-events');
+
+      if (upcomingEvents.length === 0) {
+        noEvents.style.display = '';
+        return;
+      }
+
       const etFormatter = new Intl.DateTimeFormat('en-US', {
         timeZone: 'America/New_York',
         weekday: 'long',
@@ -995,21 +979,38 @@
         const dateStr = etFormatter.format(ev.date);
         const el = document.createElement('div');
         const modifiers = ['', 'event-secondary', 'event-tertiary'];
+
         el.className = ('event-highlight ' + (modifiers[i] ?? 'event-tertiary')).trim();
         if (i > 0) el.style.marginTop = 'var(--space-4)';
         el.setAttribute('aria-label', ev.name);
+
         el.innerHTML = `
           <p class="event-label">${ev.label}</p>
           <div class="event-grid">
             <div class="event-pill"><span>Event</span><strong>${ev.name}</strong></div>
             <div class="event-pill"><span>Date</span><strong>${dateStr}</strong></div>
             <div class="event-pill"><span>Presenter</span><strong>${ev.presenter}</strong></div>
-            <div class="event-pill" style="grid-column:1/-1"><span>Address</span><strong><a href="${ev.mapquestUrl}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">${ev.address}</a></strong></div>
+            <div class="event-pill" style="grid-column:1/-1">
+              <span>Address</span>
+              <strong>
+                <a href="${ev.mapquestUrl}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">
+                  ${ev.address}
+                </a>
+              </strong>
+            </div>
           </div>
-          <p style="margin-top:12px;font-size:var(--text-sm);color:${i === 0 ? 'rgba(255,255,255,0.85)' : 'var(--text-muted)'}">${ev.description}</p>`;
+          <p style="margin-top:12px;font-size:var(--text-sm);color:${i === 0 ? 'rgba(255,255,255,0.85)' : 'var(--text-muted)'}">${ev.description}</p>
+        `;
+
         container.appendChild(el);
       });
     }
+
+    initEvents().catch(error => {
+      console.error('Event loading failed:', error);
+      document.getElementById('no-events').style.display = '';
+    });
+
 
     // ── Clip-path jiggle via SMIL (runs once; zero JS per frame after setup) ──
     (function () {
