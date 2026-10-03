@@ -1,21 +1,21 @@
 (() => {
   const imageUrls = [
-    './_images/image_22.png',
-    './_images/image_23.png',
-    './_images/image_24.png',
-    './_images/image_25.png',
-    './_images/image_26.png',
-    './_images/image_29.png',
-    './_images/image_30.png',
-    './_images/image_31.png',
-    './_images/image_32.png',
-    './_images/image_33.png',
-    './_images/image_36.png',
-    './_images/image_37.png',
-    './_images/image_38.png',
-    './_images/image_39.png',
-    './_images/image_40.png',
-    './_images/image_41.png'
+    './_images/hero-carousel/image_22.png',
+    './_images/hero-carousel/image_23.png',
+    './_images/hero-carousel/image_24.png',
+    './_images/hero-carousel/image_25.png',
+    './_images/hero-carousel/image_26.png',
+    './_images/hero-carousel/image_29.png',
+    './_images/hero-carousel/image_30.png',
+    './_images/hero-carousel/image_31.png',
+    './_images/hero-carousel/image_32.png',
+    './_images/hero-carousel/image_33.png',
+    './_images/hero-carousel/image_36.png',
+    './_images/hero-carousel/image_37.png',
+    './_images/hero-carousel/image_38.png',
+    './_images/hero-carousel/image_39.png',
+    './_images/hero-carousel/image_40.png',
+    './_images/hero-carousel/image_41.png'
   ];
 
   const imgA = document.getElementById('rotatorImageA');
