@@ -1,0 +1,12 @@
+{
+  "type": "solo-group",
+  "typeLabel": "Solo/group kit",
+  "name": "Comic Page Portrait",
+  "description": "Create a dynamic comic page portrait from pages of a comic book, featuring your own central image (or one provided). Perfect for solo or group creativity sessions.",
+  "image": "./_images/comic_page_portrait_final.jpg",
+  "imageAlt": "Example Comic Page Portrait",
+  "seasonalAvailability": null,
+  "featured": false,
+  "active": true,
+  "sortOrder": 80
+}

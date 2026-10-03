@@ -26,5 +26,13 @@
   {
     "path": "/kits-library/torn-paper-collage.json",
     "active": true
+  },
+  {
+    "path": "/kits-library/comic-page-portrait.json",
+    "active": true
+  },
+  {
+    "path": "/kits-library/comic-panel-bookmark.json",
+    "active": true
   }
 ]
