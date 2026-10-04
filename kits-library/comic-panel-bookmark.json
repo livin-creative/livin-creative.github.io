@@ -3,7 +3,7 @@
   "typeLabel": "Solo/group kit",
   "name": "Comic Panel Bookmark",
   "description": "Create your own sturdy bookmark covered with comic book panels (made to look like a panel itself). One kit makes one bookmark.",
-  "image": "./_images/comic_panel_bookmark_final.jpg",
+  "image": "./_images/kits/comic_panel_bookmark_final.jpg",
   "imageAlt": "Example Comic Panel Bookmark",
   "seasonalAvailability": null,
   "featured": false,
