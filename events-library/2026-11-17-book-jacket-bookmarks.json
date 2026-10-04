@@ -1,10 +1,11 @@
 {
   "date": "2026-11-17T18:30:00-04:00",
-  "end": "8p",
+  "end": "2026-11-17T20:00:00-04:00",
   "name": "Book jacket Bookmarks",
   "label": "Hands-on workshop",
   "presenter": "IX Art Park",
   "address": "522 Second Street SE Suite D, Charlottesville, VA, 22902",
   "mapquestUrl": "https://mapq.st/3T14Txz",
-  "description": ""
+  "description": "Turn a page and be reminded of your favorite book!\nIn this hands-on workshop, you'll transform the dust cover from a book you love into a beautiful, one-of-a-kind bookmark, giving something you love a whole new chapter in life.\nYour instructor has developed a special process for finding and revealing the best parts of each jacket, as well as ensuring a sturdy, polished build. \nAll materials are provided except for the book jacket. Bring it in, come ready to create, and turn it into a treasured keepsake.\nDesigned for adults and older teens. No previous experience necessary.",
+  "imageUrl": "./_images/workshops/book_jacket_bookmarks.jpg"
 }

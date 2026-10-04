@@ -1,5 +1,5 @@
 const eventsManifestPath = '/events-library/manifest.json';
-const MAX_EVENTS = 8;
+const EVENTS_PER_ROW = 6;
 
 async function loadEventManifest() {
   const response = await fetch(eventsManifestPath);
@@ -34,7 +34,7 @@ const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '
 async function initEvents() {
   const events = await loadEvents();
   const now = new Date();
-  const upcoming = events.filter(e => e.date >= now).slice(0, MAX_EVENTS);
+  const upcoming = events.filter(e => e.date >= now);
 
   const container = document.getElementById('events-container');
   const noEvents = document.getElementById('no-events');
@@ -48,76 +48,86 @@ async function initEvents() {
   const fullFmt = new Intl.DateTimeFormat('en-US', { timeZone: tz, weekday: 'long', month: 'long', day: 'numeric' });
   const dayFmt = new Intl.DateTimeFormat('en-US', { timeZone: tz, day: 'numeric' });
   const monFmt = new Intl.DateTimeFormat('en-US', { timeZone: tz, month: 'short' });
+  const timeFmt = new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: 'numeric', minute: '2-digit', hour12: true });
+  const formatTime = value => {
+    const parsed = new Date(value);
+    return Number.isNaN(parsed.getTime()) ? '' : timeFmt.format(parsed).replace(/\s/g, '').toLowerCase();
+  };
 
-  container.style.setProperty('--n', upcoming.length);
+  container.style.setProperty('--n', Math.min(EVENTS_PER_ROW, upcoming.length));
 
-  // I've removed the condition is-next formatting for now, but it's here for later
-  // <article class="ev-tile${i === 0 ? ' is-next' : ''}" role="listitem" tabindex="0"
-  container.innerHTML = upcoming.map((ev, i) => `
-    <article class="ev-tile" role="listitem" tabindex="0"
-             aria-expanded="false" aria-label="${esc(ev.name)}, ${esc(fullFmt.format(ev.date))}. Show details">
-      <div class="ev-date ev-summary"><span class="ev-day">${dayFmt.format(ev.date)}</span><span class="ev-mon">${monFmt.format(ev.date)}</span></div>
-      <p class="ev-name ev-summary">${esc(ev.name)}</p>
-      <div class="ev-detail">
-        <div class="ev-detail-top">
-          <div>
-            ${ev.label ? `<p class="ev-label">${esc(ev.label)}</p>` : ''}
-            <h3>${esc(ev.name)}</h3>
-          </div>
-          <button class="ev-close" type="button" aria-label="Close details">&times;</button>
-        </div>
-        <div class="ev-grid">
-          <div class="ev-pill"><span>Date</span><strong>${esc(fullFmt.format(ev.date))}</strong></div>
-          <div class="ev-pill"><span>Presenter</span><strong>${esc(ev.presenter)}</strong></div>
-          <div class="ev-pill"><span>Address</span><strong>${ev.mapquestUrl
-            ? `<a href="${esc(ev.mapquestUrl)}" target="_blank" rel="noopener noreferrer">${esc(ev.address)}</a>`
-            : esc(ev.address)}</strong></div>
-        </div>
-        <div class="ev-body">
-          <p class="ev-desc">${esc(ev.description)}</p>
-          <div class="ev-media">
-            <img
-              src="${esc(ev.imageUrl || 'https://placehold.co/400x300/e9c8f5/bb44dd?text=Event')}"
-              alt="${esc(ev.name)}"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-        </div>
-
-        <!-- <p class="ev-desc">${esc(ev.description)}</p> -->
+  const detailHTML = ev => `
+    <div class="ev-detail-top">
+      <div class="ev-heading">
+        ${ev.label ? `<p class="ev-label">${esc(ev.label)}</p>` : ''}
+        <h3>${esc(ev.name)}</h3>
+        <h4 class="ev-when">${esc(fullFmt.format(ev.date))}${formatTime(ev.date) ? ` · ${esc(formatTime(ev.date))}${formatTime(ev.end) ? `–${esc(formatTime(ev.end))}` : ''}` : ''}</h4>
       </div>
-    </article>`).join('');
+      <div class="ev-side">
+        <div class="ev-meta">
+          <p class="ev-where">${ev.mapquestUrl
+            ? `<a href="${esc(ev.mapquestUrl)}" target="_blank" rel="noopener noreferrer">${esc(ev.address)}</a>`
+            : esc(ev.address)}</p>
+          ${ev.presenter ? `<p class="ev-who">${esc(ev.presenter)}</p>` : ''}
+        </div>
+      </div>
+    </div>
+    <div class="ev-body">
+      <div class="ev-media">
+        <img
+          src="${esc(ev.imageUrl || 'https://placehold.co/400x300/e9c8f5/bb44dd?text=Event')}"
+          alt="${esc(ev.name)}"
+          title="${esc(ev.attribution || ev.name)}"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
+      <p class="ev-desc">${esc(ev.description)}</p>
+    </div>`;
 
-  function setOpen(tile) {
+  // Tiles stay in the grid; the details live in a separate full-width panel.
+  container.removeAttribute('role');
+  container.innerHTML = `
+    <section class="ev-panel" id="ev-panel" aria-live="polite" hidden></section>
+    <div class="ev-tiles" role="list">${upcoming.map((ev, i) => `
+      <article class="ev-tile" role="listitem" tabindex="0" data-index="${i}"
+               aria-controls="ev-panel" aria-pressed="false"
+               aria-label="${esc(ev.name)}, ${esc(fullFmt.format(ev.date))}. Show details">
+        <div class="ev-date"><span class="ev-day">${dayFmt.format(ev.date)}</span><span class="ev-mon">${monFmt.format(ev.date)}</span></div>
+        <p class="ev-name">${esc(ev.name)}</p>
+      </article>`).join('')}
+    </div>`;
+
+  const panel = container.querySelector('.ev-panel');
+
+  function setSelected(tile) {
     container.querySelectorAll('.ev-tile').forEach(t => {
       const on = t === tile;
-      t.classList.toggle('is-open', on);
-      t.setAttribute('aria-expanded', on);
+      t.classList.toggle('is-selected', on);
+      t.setAttribute('aria-pressed', on);
     });
-    container.classList.toggle('has-open', !!tile);
+    panel.innerHTML = detailHTML(upcoming[Number(tile.dataset.index)]);
+    panel.hidden = false;
   }
+
   container.addEventListener('error', e => {
-    console.log (e.target)
     const img = e.target;
     if (img.tagName === 'IMG' && !img.src) img.src = PLACEHOLDER_IMG;
   }, true);
   container.addEventListener('click', e => {
+    if (e.target.closest('a')) return;
     const tile = e.target.closest('.ev-tile');
-    if (!tile || e.target.closest('a')) return;
-    if (e.target.closest('.ev-close')) { setOpen(null); tile.focus(); return; }
-    if (!tile.classList.contains('is-open')) setOpen(tile);
+    if (tile && !tile.classList.contains('is-selected')) setSelected(tile);
   });
   container.addEventListener('keydown', e => {
     const tile = e.target.closest('.ev-tile');
-    if (e.key === 'Escape') setOpen(null);
-    else if (tile && e.target === tile && (e.key === 'Enter' || e.key === ' ')) {
+    if (tile && e.target === tile && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
-      if (!tile.classList.contains('is-open')) setOpen(tile);
+      if (!tile.classList.contains('is-selected')) setSelected(tile);
     }
   });
-  // Open the first (soonest) event on page load
-  setOpen(container.querySelector('.ev-tile'));
+  // Select the first (soonest) event on page load
+  setSelected(container.querySelector('.ev-tile'));
 }
 
 initEvents().catch(error => {

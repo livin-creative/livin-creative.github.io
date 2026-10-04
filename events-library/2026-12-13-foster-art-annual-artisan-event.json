@@ -1,10 +1,11 @@
 {
-  "date": "2026-12-13 TBD",
-  "end": "8p",
+  "date": "2026-12-13T00:00:00-04:00",
+  "end": "2026-12-13T20:00:00-04:00",
   "name": "Foster Art Annual Artisan Event",
   "label": "Craft market",
   "presenter": "Foster Art",
   "address": "1770 Timberwood Blvd, Ste 106, Charlottesville, VA, 22911",
   "mapquestUrl": "https://mapq.st/4yNEzG5",
-  "description": ""
+  "description": "Shop local this holiday season! Handmade goods perfect for gift giving or treating yourself",
+  "imageUrl": "./_images/workshops/foster_art_annual_artisan_event.png"
 }
