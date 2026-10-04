@@ -823,7 +823,7 @@ h2 {
 /* Image floats to the upper right; the paragraph text wraps around it. */
 .ev-media {
   float: right;
-  max-width: min(400px, 45%);
+  max-width: min(200px, 45%);
   margin: 0 0 var(--space-3) var(--space-4);
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.2);
@@ -831,13 +831,13 @@ h2 {
   background: rgba(255,255,255,.14);
 }
 
-/* Natural proportions, never taller than 400px. */
+/* Natural proportions, never taller than 200px. */
 .ev-media img {
   display: block;
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: 400px;
+  max-height: 200px;
   object-fit: cover;
 }
 
