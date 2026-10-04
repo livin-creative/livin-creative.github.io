@@ -50,8 +50,11 @@ async function initEvents() {
   const monFmt = new Intl.DateTimeFormat('en-US', { timeZone: tz, month: 'short' });
 
   container.style.setProperty('--n', upcoming.length);
+
+  // I've removed the condition is-next formatting for now, but it's here for later
+  // <article class="ev-tile${i === 0 ? ' is-next' : ''}" role="listitem" tabindex="0"
   container.innerHTML = upcoming.map((ev, i) => `
-    <article class="ev-tile${i === 0 ? ' is-next' : ''}" role="listitem" tabindex="0"
+    <article class="ev-tile" role="listitem" tabindex="0"
              aria-expanded="false" aria-label="${esc(ev.name)}, ${esc(fullFmt.format(ev.date))}. Show details">
       <div class="ev-date ev-summary"><span class="ev-day">${dayFmt.format(ev.date)}</span><span class="ev-mon">${monFmt.format(ev.date)}</span></div>
       <p class="ev-name ev-summary">${esc(ev.name)}</p>
@@ -95,8 +98,9 @@ async function initEvents() {
     container.classList.toggle('has-open', !!tile);
   }
   container.addEventListener('error', e => {
+    console.log (e.target)
     const img = e.target;
-    if (img.tagName === 'IMG' && img.src !== PLACEHOLDER_IMG) img.src = PLACEHOLDER_IMG;
+    if (img.tagName === 'IMG' && !img.src) img.src = PLACEHOLDER_IMG;
   }, true);
   container.addEventListener('click', e => {
     const tile = e.target.closest('.ev-tile');
@@ -112,6 +116,8 @@ async function initEvents() {
       if (!tile.classList.contains('is-open')) setOpen(tile);
     }
   });
+  // Open the first (soonest) event on page load
+  setOpen(container.querySelector('.ev-tile'));
 }
 
 initEvents().catch(error => {
