@@ -83,7 +83,19 @@ async function initEvents() {
         >
       </div>
       <p class="ev-desc">${esc(ev.description)}</p>
-    </div>`;
+    </div>
+    ${ev.registrationUrl
+      ? `
+        <div class="ev-footer">
+          <a class="ev-register ev-register--is-warm" href="${esc(ev.registrationUrl)}" target="_blank" rel="noopener noreferrer">
+            <span>Register <span class="ev-register-extra-narrow">Here</span><span class="ev-register-extra-wide">for this class</span></span>
+            <span class="ev-register-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      `
+      : ''
+    }
+  `
 
   // Tiles stay in the grid; the details live in a separate full-width panel.
   container.removeAttribute('role');

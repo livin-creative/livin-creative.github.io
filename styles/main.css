@@ -160,25 +160,6 @@ a {
   backdrop-filter: blur(12px);
 }
 
-.brand-logo {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-}
-
-.brand-logo .brand-svg {
-  display: block;
-  height: 44px;
-  width: auto;
-}
-
-.brand-logotype {
-  display: block;
-  height: 44px;
-  width: auto;
-  flex: 0 0 auto;
-}
-
 #main {
   margin-top: calc(-1 * var(--header-height));
 }
@@ -283,31 +264,6 @@ h2 {
   color: var(--text-dark);
 }
 
-.logo-stage {
-  grid-column: 1 / -1;
-  position: relative;
-  border-radius: 30px;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-/* brand-svg is in-flow so its aspect-ratio drives the container height -
-    avoids iOS WebKit bug where overflow:hidden + absolute SVG + clip-path = invisible */
-.logo-stage .brand-svg {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-}
-
-.logo-stage .stage-splashes {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
 .hero-tagline {
   grid-column: 1 / -1;
   margin: 0;
@@ -351,13 +307,6 @@ h2 {
   paint-order: stroke fill;
 }
 
-.logo-outline {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.72);
-  stroke-width: 28;
-  pointer-events: none;
-}
-
 #rotatorImageA,
 #rotatorImageB {
   transition: opacity 0.8s ease;
@@ -386,6 +335,104 @@ h2 {
 .event-card>p:last-child {
   margin-top: auto;
   padding-top: var(--space-4);
+}
+
+.ev-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ev-register {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.85rem 1.75rem;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background-position 300ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.ev-register--is-warm {
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffb347 0%, #ff7a59 100%);
+  color: #2b1538;
+  box-shadow: 0 6px 16px rgba(255, 122, 89, 0.4);
+}
+
+.ev-register--is-cool {
+  color: #fff;
+  background: linear-gradient(135deg, #e0338f 0%, #bb44dd 50%, #6a5cf0 100%);
+  background-size: 140% 140%;
+  background-position: 0% 50%;
+  box-shadow: 0 6px 16px rgba(187, 68, 221, 0.35);
+}
+
+.ev-register-extra-narrow {
+  display: none;
+}
+
+@media (max-width: 399px) {
+  .ev-register-extra-wide {
+    display: none;
+  }
+
+  .ev-register-extra-narrow {
+    display: inline;
+  }
+}
+
+.ev-register-arrow {
+  transition: transform 180ms ease;
+}
+
+.ev-register:hover {
+  background-position: 100% 50%;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(187, 68, 221, 0.45);
+}
+
+.ev-register:hover .ev-register-arrow {
+  transform: translateX(4px);
+}
+
+.ev-register:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(187, 68, 221, 0.35);
+}
+
+.ev-register:focus-visible {
+  outline: 3px solid #28251d;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .ev-footer {
+    justify-content: stretch;
+  }
+
+  .ev-register {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ev-register,
+  .ev-register-arrow {
+    transition: none;
+  }
+
+  .ev-register:hover,
+  .ev-register:hover .ev-register-arrow {
+    transform: none;
+  }
 }
 
 .info-card p+p,
@@ -816,7 +863,8 @@ h2 {
 }
 
 .ev-body {
-  display: flow-root; /* contains the floated image */
+  display: flow-root;
+  /* contains the floated image */
   min-height: 200px;
 }
 
@@ -826,9 +874,9 @@ h2 {
   max-width: min(200px, 45%);
   margin: 0 0 var(--space-3) var(--space-4);
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.2);
+  border: 1px solid rgba(255, 255, 255, .2);
   border-radius: var(--radius-sm);
-  background: rgba(255,255,255,.14);
+  background: rgba(255, 255, 255, .14);
 }
 
 /* Natural proportions, never taller than 200px. */
@@ -852,7 +900,8 @@ h2 {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scroll-padding-inline: var(--space-2); /* snap to the padded edge, not the raw edge */
+    scroll-padding-inline: var(--space-2);
+    /* snap to the padded edge, not the raw edge */
   }
 
   .ev-tiles .ev-tile {
@@ -906,10 +955,6 @@ h2 {
 @media (max-width: 980px) {
   .hero-grid {
     grid-template-columns: 1fr;
-  }
-
-  .logo-stage {
-    grid-column: auto;
   }
 
   .side-stack {
