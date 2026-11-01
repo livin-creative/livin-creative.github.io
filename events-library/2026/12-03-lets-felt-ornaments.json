@@ -1,6 +1,7 @@
 {
-  "date": "2026-12-03T18:00:00-04:00",
-  "end": "2026-12-03T20:00:00-04:00",
+  "timeZone": "America/New_York",
+  "start": "2026-12-03T18:00:00",
+  "end": "2026-12-03T20:00:00",
   "name": "Let's Felt! Ornaments",
   "label": "Hands-on workshop",
   "presenter": "Foster Art",

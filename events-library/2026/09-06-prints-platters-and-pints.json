@@ -1,5 +1,6 @@
 {
-  "date": "2026-09-06T09:00:00-04:00",
+  "timeZone": "America/New_York",
+  "start": "2026-09-06T09:00:00",
   "name": "Prints, Platters, and Pints",
   "label": "Craft market",
   "presenter": "Potter's Craft Cider",

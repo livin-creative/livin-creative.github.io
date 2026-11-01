@@ -1,5 +1,6 @@
 {
-  "date": "2026-08-15T09:00:00-04:00",
+  "timeZone": "America/New_York",
+  "start": "2026-08-15T09:00:00",
   "name": "Scrappy Elephant Annual Birthday Celebration",
   "label": "Birthday celebration craft market",
   "presenter": "The Scrappy Elephant",

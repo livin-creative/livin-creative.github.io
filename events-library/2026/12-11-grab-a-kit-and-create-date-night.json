@@ -1,6 +1,7 @@
 {
-  "date": "2026-12-11T18:00:00-04:00",
-  "end": "2026-12-11T21:00:00-04:00",
+  "timeZone": "America/New_York",
+  "start": "2026-12-11T18:00:00",
+  "end": "2026-12-11T21:00:00",
   "name": "Grab A Kit & Create: Date Night",
   "label": "Hands-on workshop",
   "presenter": "Foster Art",

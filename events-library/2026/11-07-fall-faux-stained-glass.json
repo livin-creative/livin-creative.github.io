@@ -1,6 +1,7 @@
 {
-  "date": "2026-11-07T10:30:00-04:00",
-  "end": "2026-11-07T12:30:00-04:00",
+  "timeZone": "America/New_York",
+  "start": "2026-11-07T10:30:00",
+  "end": "2026-11-07T12:30:00",
   "name": "Fall Faux Stained Glass",
   "label": "Hands-on workshop",
   "presenter": "Foster Art",

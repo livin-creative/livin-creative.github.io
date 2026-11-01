@@ -1,6 +1,7 @@
 {
-  "date": "2026-11-21T09:00:00-04:00",
-  "end": "2026-12-21T12:00:00-04:00",
+  "timeZone": "America/New_York",
+  "start": "2026-11-21T09:00:00",
+  "end": "2026-12-21T12:00:00",
   "name": "Forest Lakes Holiday Market",
   "label": "Craft market",
   "presenter": "Forest Lakes",
