@@ -1,70 +1,34 @@
 const eventsManifestPath = '/events-library/manifest.json';
 const EVENTS_PER_ROW = 6;
+const { DateTime } = luxon;
 const DEFAULT_TIME_ZONE = 'America/New_York';
 
 const PLACEHOLDER_IMG = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#e9c8f5"/><path d="M40 150l35-45 25 30 20-25 40 40z" fill="#bb44dd" opacity=".55"/><circle cx="145" cy="65" r="16" fill="#fff" opacity=".8"/></svg>');
 
-const escapeDangerousCharacters = text =>
-  String(text ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-
-function parseWallClock(text) {
-  const [year, month, day, hour = 0, minute = 0] = String(text).match(/\d+/g).map(Number);
-  return { year, month, day, hour, minute };
+const prepareEvent = (event) => {
+  const timeZone = event.timeZone || DEFAULT_TIME_ZONE;
+  const start = DateTime.fromISO(event.start, { zone: timeZone });
+  const end = event.end ? DateTime.fromISO(event.end, { zone: timeZone }) : null;
+  return { ...event, start, end };
 }
 
-const wallToDate = w => new Date(Date.UTC(w.year, w.month - 1, w.day, w.hour, w.minute));
+const longDate = dt => dt.toFormat('cccc, LLLL d');
+const clock = dt => dt.toFormat('h:mma').toLowerCase();
 
-function zonedToInstant(w, timeZone) {
-  const guess = Date.UTC(w.year, w.month - 1, w.day, w.hour, w.minute);
-  const parts = new Intl.DateTimeFormat('en-US', {
-    timeZone, hourCycle: 'h23',
-    year: 'numeric', month: 'numeric', day: 'numeric',
-    hour: 'numeric', minute: 'numeric'
-  }).formatToParts(new Date(guess));
-  const get = type => +parts.find(p => p.type === type).value;
-  const shown = Date.UTC(get('year'), get('month') - 1, get('day'), get('hour'), get('minute'));
-  return new Date(guess - (shown - guess));
+const formatWhen = (start, end) => {
+  if (!end) return `${longDate(start)} · ${clock(start)}`;
+  return start.hasSame(end, 'day')
+    ? `${longDate(start)} · ${clock(start)}-${clock(end)}`
+    : `${longDate(start)} · ${clock(start)}-${longDate(end)} · ${clock(end)}`;
 }
 
-const formatWall = (w, options) =>
-  wallToDate(w).toLocaleString('en-US', { timeZone: 'UTC', ...options });
-
-const formatLongDate = w => formatWall(w, { weekday: 'long', month: 'long', day: 'numeric' });
-const formatClock = w =>
-  formatWall(w, { hour: 'numeric', minute: '2-digit', hour12: true }).replace(/\s/g, '').toLowerCase();
-
-function formatWhen(startWall, endWall) {
-  if (!endWall) return `${formatLongDate(startWall)} · ${formatClock(startWall)}`;
-  const sameDay =
-    startWall.year === endWall.year &&
-    startWall.month === endWall.month &&
-    startWall.day === endWall.day;
-  return sameDay
-    ? `${formatLongDate(startWall)} · ${formatClock(startWall)}–${formatClock(endWall)}`
-    : `${formatLongDate(startWall)} · ${formatClock(startWall)}–${formatLongDate(endWall)} · ${formatClock(endWall)}`;
-}
-
-async function loadEventManifest() {
+const loadEventManifest = async function() {
   const response = await fetch(eventsManifestPath);
   if (!response.ok) throw new Error(`Failed to load ${eventsManifestPath}`);
   return response.json();
 }
 
-function prepareEvent(event) {
-  const timeZone = event.timeZone || DEFAULT_TIME_ZONE;
-  const startWall = parseWallClock(event.start);
-  const endWall = event.end ? parseWallClock(event.end) : null;
-  return {
-    ...event,
-    timeZone,
-    startWall,
-    endWall,
-    startInstant: zonedToInstant(startWall, timeZone),
-    endInstant: endWall ? zonedToInstant(endWall, timeZone) : null
-  };
-}
-
-async function loadEvents() {
+const loadEvents = async function() {
   const manifest = await loadEventManifest();
   const results = await Promise.all(
     manifest.filter(item => item.active).map(async ({ path }) => {
@@ -82,16 +46,19 @@ async function loadEvents() {
     .flat()
     .filter(event => event && event.start)
     .map(prepareEvent)
-    .filter(event => !Number.isNaN(event.startInstant.getTime()))
-    .sort((a, b) => a.startInstant - b.startInstant);
+    .filter(event => !event.start.invalid)
+    .sort((a, b) => a.start - b.start);
 }
 
-function formatEvent(event) {
+const escapeDangerousCharacters = text => {
+  return String(text ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+const formatEvent = (event) => {
   const formatted = {
     ...event,
-    day: formatWall(event.startWall, { day: 'numeric' }),
-    month: formatWall(event.startWall, { month: 'short' }),
-    when: formatWhen(event.startWall, event.endWall)
+    day: event.start.toFormat('d'),
+    month: event.start.toFormat('LLL'),
+    when: formatWhen(event.start, event.end)
   };
   Object.keys(formatted).forEach(key => {
     if (typeof formatted[key] === 'string') {
@@ -143,7 +110,7 @@ async function initEvents() {
   const events = await loadEvents();
   const now = new Date();
   const upcomingEvents = events
-    .filter(e => (e.endInstant || e.startInstant) >= now)
+    .filter(e => (e.end || e.start) >= now)
     .map(formatEvent);
 
   const container = document.getElementById('events-container');
