@@ -127,12 +127,12 @@ async function initEvents() {
   container.innerHTML = `
     <section class="event-panel" id="event-panel" aria-live="polite" hidden></section>
     <div class="event-tiles" role="list">${upcomingEvents.map((e, i) => `
-      <article class="event-tile" role="listitem" tabindex="0" data-index="${i}"
+      <div class="event-tile" role="listitem" tabindex="0" data-index="${i}"
                aria-controls="event-panel" aria-pressed="false"
                aria-label="${e.name}, ${e.when}. Show details">
         <div class="event-date"><span class="event-day">${e.day}</span><span class="event-month">${e.month}</span></div>
         <p class="event-name">${e.name}</p>
-      </article>`).join('')}
+      </div>`).join('')}
     </div>`;
 
   const panel = container.querySelector('.event-panel');

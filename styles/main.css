@@ -264,7 +264,12 @@ h2 {
   color: var(--text-dark);
 }
 
+.page-article {
+  display: contents;
+}
+
 .hero-tagline {
+  max-width: none;
   grid-column: 1 / -1;
   margin: 0;
   margin-top: -1.8em;

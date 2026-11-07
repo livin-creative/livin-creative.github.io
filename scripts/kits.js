@@ -30,15 +30,15 @@ async function loadKits() {
 }
 
 function createKitCard(kit) {
-  const article = document.createElement('article');
-  article.className = 'product-card';
+  const kitCard = document.createElement('div');
+  kitCard.className = 'product-card';
 
   const indexClasses = ['product-index'];
   if (kit.type === 'date-night') {
     indexClasses.push('date-night');
   }
 
-  article.innerHTML = `
+  kitCard.innerHTML = `
     <div class="product-card-content">
       <div class="${indexClasses.join(' ')}">${kit.typeLabel}</div>
       <h3>${kit.name}</h3>
@@ -56,7 +56,7 @@ function createKitCard(kit) {
     >
   `;
 
-  return article;
+  return kitCard;
 }
 
 async function initKits() {
