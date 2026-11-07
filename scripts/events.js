@@ -125,7 +125,7 @@ const renderSchedule = events => {
 }
 
 async function initEvents() {
-  console.log ('20261107')
+  console.log ('202611070031')
   const events = await loadEvents();
   const now = new Date();
   const upcomingEvents = events

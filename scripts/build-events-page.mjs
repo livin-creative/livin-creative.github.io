@@ -67,10 +67,12 @@ const item = e => {
   return `
       <section class="schedule-item">
         <h2>${esc(e.name)}</h2>
-        <p class="schedule-when">${esc(when(s, en))}${e.label ? `<br>
-        <span class="schedule-label">${esc(e.label)}</span>` : ''}</p>${e.address ? `
-        <p class="schedule-where">${e.mapquestUrl ? `<a href="${esc(e.mapquestUrl)}">${esc(e.address)}</a>` : esc(e.address)}</p>` : ''}${e.presenter ? `
-        <p class="schedule-who">Presented by ${esc(e.presenter)}</p>` : ''}${e.imageUrl ? `
+        <p class="schedule-when">${e.label ? `<span class="schedule-label">${esc(e.label)}</span><br>
+        ` : ''}${esc(when(s, en))}</p>${(e.presenter || e.address) ? `
+        <p class="schedule-where">${[
+          e.presenter ? `<span class="schedule-who">Presented by ${esc(e.presenter)}</span>` : '',
+          e.address ? (e.mapquestUrl ? `<a href="${esc(e.mapquestUrl)}">${esc(e.address)}</a>` : esc(e.address)) : ''
+        ].filter(Boolean).join('<br>\n        ')}</p>` : ''}${e.imageUrl ? `
         <figure class="schedule-figure">
           <img src="${imgSrc(e.imageUrl)}" alt="${esc(e.name)}"${sizeAttrs(e.imageUrl)} loading="lazy">${e.attribution ? `
           <figcaption>${esc(e.attribution)}</figcaption>` : ''}
