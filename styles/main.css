@@ -984,30 +984,3 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
-/* Full written schedule: the text Safari Reader uses for the events article */
-.events-schedule {
-  margin-top: var(--space-5);
-}
-
-.events-schedule h2 {
-  font-size: var(--text-lg);
-}
-
-.schedule-item {
-  padding: var(--space-4) 0;
-  border-top: 1px solid var(--line);
-}
-
-.schedule-item h3 {
-  font-size: var(--text-md, 1.15rem);
-  margin-bottom: var(--space-2);
-}
-
-.schedule-item p {
-  margin: 0 0 var(--space-2);
-  color: var(--text-muted);
-}
-
-.schedule-item .schedule-desc {
-  color: var(--text-dark);
-}

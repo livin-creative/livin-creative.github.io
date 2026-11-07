@@ -106,24 +106,6 @@ const detailHTML = e => `
   ` : ''}
 `;
 
-const scheduleItemHTML = event => `
-  <section class="schedule-item">
-    <h3>${event.name}</h3>
-    <p class="schedule-when">${event.when}</p>
-    ${event.address ? `<p class="schedule-where">${event.address}</p>` : ''}
-    ${event.presenter ? `<p class="schedule-who">Presented by ${event.presenter}</p>` : ''}
-    ${event.description ? `<p class="schedule-desc">${event.description}</p>` : ''}
-    ${event.registrationUrl ? `<p><a href="${event.registrationUrl}" target="_blank" rel="noopener noreferrer">Register for ${event.name}</a></p>` : ''}
-  </section>`;
-
-const renderSchedule = events => {
-  const schedule = document.getElementById('events-schedule');
-  if (!schedule) return;
-  schedule.innerHTML = `
-    <h2>Full schedule</h2>
-    ${events.map(scheduleItemHTML).join('')}`;
-}
-
 async function initEvents() {
   console.log ('202611070031')
   const events = await loadEvents();
@@ -139,8 +121,6 @@ async function initEvents() {
     noEvents.style.display = '';
     return;
   }
-
-  renderSchedule(upcomingEvents);
 
   container.style.setProperty('--n', Math.min(EVENTS_PER_ROW, upcomingEvents.length));
 
