@@ -67,17 +67,18 @@
     <main id="main">
       <section class="hero-grid" aria-label="Main layout blocks">
         <div id="hero-rotator" class="logo-stage"></div>
-        <h1 class="hero-tagline">Mess Around and Find Art</h1>
+        <p class="hero-tagline" aria-label="Tagline: Mess Around and Find Art">Mess Around and Find Art</p>
       </section>
 
-      <section class="events-bleed" aria-labelledby="events-title">
+      <article class="events-bleed" aria-labelledby="events-title">
         <div class="events-head">
-          <h2 class="section-intent">Events Schedule</h2>
+          <h1 class="section-intent" id="events-title">Events Schedule</h1>
           <p class="events-hint">Tap a tile for all the details.</p>
         </div>
         <div id="events-container" class="events-tableau"></div>
         <p id="no-events" style="display:none; margin-top: 16px; color: var(--text-muted);">No upcoming events at this time. Check back soon!</p>
-      </section>
+        <div id="events-schedule" class="events-schedule"></div>
+      </article>
 
       <section class="panel products" aria-label="Current kits">
         <p class="section-intent">Current Products</p>
@@ -88,7 +89,7 @@
       </section>
 
       <section class="info-card copy-block" aria-label="About us">
-        <article class="panel info-card copy-block">
+        <div class="panel info-card copy-block">
           <p class="section-intent">Who we are</p>
           <h2>Art is discovery</h2>
           <p>Livin Creative began somewhere between paint splatters and sketchbooks; late-night ideas and project lists; and the simple magic of making something with our hands.</p>
@@ -103,7 +104,7 @@
           </ul>
           <p>You found us, and we can't wait to make things alongside you!</p>
           <p style="text-align: center"><strong>Thank you for being part of this growing creative community!</strong></p>
-        </article>
+        </div>
       </section>
     </main>
   </div>
