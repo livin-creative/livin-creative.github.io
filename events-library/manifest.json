@@ -85,10 +85,14 @@
   },
   {
     "path": "/events-library/2026/11-28-small-business-saturday-event.json",
-    "active": false
+    "active": true
   },
   {
     "path": "/events-library/2026/12-03-lets-felt-ornaments.json",
+    "active": true
+  },
+  {
+    "path": "/events-library/2026/12-05-book-jacket-bookmarks.json",
     "active": true
   },
   {
