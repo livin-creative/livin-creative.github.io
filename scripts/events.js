@@ -99,8 +99,9 @@ const detailHTML = e => `
   ${e.registrationUrl ? `
     <div class="event-footer">
       <a class="event-register event-register--is-warm" href="${e.registrationUrl}" target="_blank" rel="noopener noreferrer">
-        <span>Register <span class="event-register-extra-narrow">Here</span><span class="event-register-extra-wide">for this class</span></span>
+        <span>${e.registrationButtonText || 'Register <span class="event-register-extra-narrow"></span><span class="event-register-extra-wide">for this class</span>'}</span>
         <span class="event-register-arrow" aria-hidden="true">→</span>
+        <!--div>"registrationButtonText": "Register",</div-->
       </a>
     </div>
   ` : ''}
